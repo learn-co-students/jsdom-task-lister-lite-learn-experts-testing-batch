@@ -1,5 +1,8 @@
+// *** BASIC WORKING SOLUTION ***
+
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelector('#create-task-form').addEventListener('submit', handleFormSubmit);
+  deleteButtonListener()
 });
 
 const userInputValue = () => {
@@ -13,7 +16,19 @@ const handleFormSubmit = event => {
 
 const addNewLI = () => {
   const taskList = document.querySelector('ul#tasks')
-  const newLI = document.createElement('li')
-  newLI.innerText = userInputValue();
-  taskList.append(newLI);
+  const newTaskItem = new TaskItem(userInputValue())
+  taskList.innerHTML += newTaskItem.render();
 }
+
+const deleteButtonListener = () => {
+  document.querySelector('ul#tasks').addEventListener('click', deleteTaskItem)
+}
+
+const deleteTaskItem = event => {
+  if(event.target.innerHTML === "X") {
+    event.target.parentElement.remove()
+  }
+}
+
+// *** END BASIC SOLUTION ***
+
