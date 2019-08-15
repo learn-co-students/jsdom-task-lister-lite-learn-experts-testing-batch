@@ -1,18 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
   let form = document.querySelector("#create-task-form")
 
-  const addFormListener = e => {
+  const createListItem = e => {
     e.preventDefault();
     let taskList = document.querySelector("#tasks")
     let item = document.createElement("li");
+    let newItemValue = document.querySelector("#new-task-description")
+
     item.id = guidGenerator()
-    let newListItem = document.querySelector("#new-task-description")
-    item.innerHTML +=  `${newListItem.value} <button onClick=handleClick("${item.id}")>X</button>`
+    item.innerHTML +=  `${newItemValue.value} <button onClick=handleClick("${item.id}")>X</button>`
     taskList.prepend(item)
-    newListItem.value = ""
+    newItemValue.value = ""
   }
 
-  form.addEventListener("submit", addFormListener);
+  form.addEventListener("submit", createListItem);
 
 })
 
