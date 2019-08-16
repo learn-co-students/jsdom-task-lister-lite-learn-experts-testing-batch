@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
             buttonsList.push(button);
 
             id += 1;
-
         }
     });
 
